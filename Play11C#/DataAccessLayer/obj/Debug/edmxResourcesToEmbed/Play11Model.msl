@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Play11DatabaseModelStoreContainer" CdmEntityContainer="Play11DatabaseEntities">
+    <EntitySetMapping Name="ref_PlayerRole">
+      <EntityTypeMapping TypeName="Play11DatabaseModel.ref_PlayerRole">
+        <MappingFragment StoreEntitySet="ref_PlayerRole">
+          <ScalarProperty Name="PlayerRoleId" ColumnName="PlayerRoleId" />
+          <ScalarProperty Name="PlayerRoleName" ColumnName="PlayerRoleName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ref_UserRole">
+      <EntityTypeMapping TypeName="Play11DatabaseModel.ref_UserRole">
+        <MappingFragment StoreEntitySet="ref_UserRole">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="trn_ScoreCardDetails">
+      <EntityTypeMapping TypeName="Play11DatabaseModel.trn_ScoreCardDetails">
+        <MappingFragment StoreEntitySet="trn_ScoreCardDetails">
+          <ScalarProperty Name="OverId" ColumnName="OverId" />
+          <ScalarProperty Name="MaidenOvers" ColumnName="MaidenOvers" />
+          <ScalarProperty Name="WicketsTaken" ColumnName="WicketsTaken" />
+          <ScalarProperty Name="RunOutorCatches" ColumnName="RunOutorCatches" />
+          <ScalarProperty Name="SixCount" ColumnName="SixCount" />
+          <ScalarProperty Name="FourCount" ColumnName="FourCount" />
+          <ScalarProperty Name="RunsScored" ColumnName="RunsScored" />
+          <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
+          <ScalarProperty Name="MatchId" ColumnName="MatchId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ref_UserDetails">
+      <EntityTypeMapping TypeName="Play11DatabaseModel.ref_UserDetails">
+        <MappingFragment StoreEntitySet="ref_UserDetails">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ref_PlayerDetails">
+      <EntityTypeMapping TypeName="Play11DatabaseModel.ref_PlayerDetails">
+        <MappingFragment StoreEntitySet="ref_PlayerDetails">
+          <ScalarProperty Name="TeamId" ColumnName="TeamId" />
+          <ScalarProperty Name="Points" ColumnName="Points" />
+          <ScalarProperty Name="PlayerRoleId" ColumnName="PlayerRoleId" />
+          <ScalarProperty Name="PlayerName" ColumnName="PlayerName" />
+          <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ref_TeamDetails">
+      <EntityTypeMapping TypeName="Play11DatabaseModel.ref_TeamDetails">
+        <MappingFragment StoreEntitySet="ref_TeamDetails">
+          <ScalarProperty Name="TeamName" ColumnName="TeamName" />
+          <ScalarProperty Name="TeamId" ColumnName="TeamId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="trn_UserTeamDetails">
+      <EntityTypeMapping TypeName="Play11DatabaseModel.trn_UserTeamDetails">
+        <MappingFragment StoreEntitySet="trn_UserTeamDetails">
+          <ScalarProperty Name="CurrentMatchUserId" ColumnName="CurrentMatchUserId" />
+          <ScalarProperty Name="MatchId" ColumnName="MatchId" />
+          <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ref_MatchDetails">
+      <EntityTypeMapping TypeName="Play11DatabaseModel.ref_MatchDetails">
+        <MappingFragment StoreEntitySet="ref_MatchDetails">
+          <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
+          <ScalarProperty Name="SecondTeam" ColumnName="SecondTeam" />
+          <ScalarProperty Name="FirstTeam" ColumnName="FirstTeam" />
+          <ScalarProperty Name="MatchTime" ColumnName="MatchTime" />
+          <ScalarProperty Name="MatchDate" ColumnName="MatchDate" />
+          <ScalarProperty Name="Venue" ColumnName="Venue" />
+          <ScalarProperty Name="MatchId" ColumnName="MatchId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExecptionLogs">
+      <EntityTypeMapping TypeName="Play11DatabaseModel.ExecptionLog">
+        <MappingFragment StoreEntitySet="ExecptionLog">
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="StackTrace" ColumnName="StackTrace" />
+          <ScalarProperty Name="Source" ColumnName="Source" />
+          <ScalarProperty Name="ExceptionMsg" ColumnName="ExceptionMsg" />
+          <ScalarProperty Name="InnerExecption" ColumnName="InnerExecption" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="LogId" ColumnName="LogId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

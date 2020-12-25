@@ -1,0 +1,11 @@
+C:\Users\M1037374\Desktop\Play11\DataAccessLayer\bin\Release\DataAccessLayer.dll.config
+C:\Users\M1037374\Desktop\Play11\DataAccessLayer\bin\Release\DataAccessLayer.dll
+C:\Users\M1037374\Desktop\Play11\DataAccessLayer\bin\Release\DataAccessLayer.pdb
+C:\Users\M1037374\Desktop\Play11\DataAccessLayer\bin\Release\EntityFramework.dll
+C:\Users\M1037374\Desktop\Play11\DataAccessLayer\bin\Release\EntityLayer.dll
+C:\Users\M1037374\Desktop\Play11\DataAccessLayer\bin\Release\EntityLayer.pdb
+C:\Users\M1037374\Desktop\Play11\DataAccessLayer\bin\Release\EntityFramework.xml
+C:\Users\M1037374\Desktop\Play11\DataAccessLayer\obj\Release\DataAccessLayer.csprojResolveAssemblyReference.cache
+C:\Users\M1037374\Desktop\Play11\DataAccessLayer\obj\Release\DataAccessLayer.csproj.CoreCompileInputs.cache
+C:\Users\M1037374\Desktop\Play11\DataAccessLayer\obj\Release\DataAccessLayer.dll
+C:\Users\M1037374\Desktop\Play11\DataAccessLayer\obj\Release\DataAccessLayer.pdb

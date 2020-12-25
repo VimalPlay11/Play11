@@ -1,0 +1,50 @@
+﻿@model Play11.Models.PlayerDetails
+
+
+<table>
+    <thead>
+        <tr>
+            <th>
+                Player Name
+            </th>
+            <th>
+                Team Name
+            </th>
+            <th>
+                Player Points
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var m in Model.lstWicketKeeper)
+        {
+            <tr>
+                <td>@m.PlayerName</td>
+                <td>@m.TeamName</td>
+                <td>@m.PlayerPoints</td>
+            </tr>
+        }
+        @foreach (var m in Model.lstBatsman)
+        {
+            <tr>
+                <td>@m.PlayerName</td>
+                <td>@m.TeamName</td>
+                <td>@m.PlayerPoints</td>
+            </tr>
+        } @foreach (var m in Model.lstAllRounder)
+        {
+            <tr>
+                <td>@m.PlayerName</td>
+                <td>@m.TeamName</td>
+                <td>@m.PlayerPoints</td>
+            </tr>
+        } @foreach (var m in Model.lstBowler)
+        {
+            <tr>
+                <td>@m.PlayerName</td>
+                <td>@m.TeamName</td>
+                <td>@m.PlayerPoints</td>
+            </tr>
+        }
+    </tbody>
+</table>

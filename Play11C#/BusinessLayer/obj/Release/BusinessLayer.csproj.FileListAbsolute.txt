@@ -1,0 +1,13 @@
+C:\Users\M1037374\Desktop\Play11\BusinessLayer\bin\Release\BusinessLayer.dll
+C:\Users\M1037374\Desktop\Play11\BusinessLayer\bin\Release\BusinessLayer.pdb
+C:\Users\M1037374\Desktop\Play11\BusinessLayer\bin\Release\DataAccessLayer.dll
+C:\Users\M1037374\Desktop\Play11\BusinessLayer\bin\Release\EntityLayer.dll
+C:\Users\M1037374\Desktop\Play11\BusinessLayer\bin\Release\EntityFramework.dll
+C:\Users\M1037374\Desktop\Play11\BusinessLayer\bin\Release\DataAccessLayer.pdb
+C:\Users\M1037374\Desktop\Play11\BusinessLayer\bin\Release\DataAccessLayer.dll.config
+C:\Users\M1037374\Desktop\Play11\BusinessLayer\bin\Release\EntityLayer.pdb
+C:\Users\M1037374\Desktop\Play11\BusinessLayer\bin\Release\EntityFramework.xml
+C:\Users\M1037374\Desktop\Play11\BusinessLayer\obj\Release\BusinessLayer.csprojResolveAssemblyReference.cache
+C:\Users\M1037374\Desktop\Play11\BusinessLayer\obj\Release\BusinessLayer.csproj.CoreCompileInputs.cache
+C:\Users\M1037374\Desktop\Play11\BusinessLayer\obj\Release\BusinessLayer.dll
+C:\Users\M1037374\Desktop\Play11\BusinessLayer\obj\Release\BusinessLayer.pdb

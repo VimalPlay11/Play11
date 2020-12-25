@@ -1,0 +1,15 @@
+C:\Users\M1037374\Documents\Visual Studio 2017\Projects\Play11\BusinessLayer\obj\Debug\BusinessLayer.csprojResolveAssemblyReference.cache
+C:\Users\M1037374\Documents\Visual Studio 2017\Projects\Play11\BusinessLayer\obj\Debug\BusinessLayer.csproj.CoreCompileInputs.cache
+C:\Users\M1037374\Desktop\Play11\BusinessLayer\bin\Debug\BusinessLayer.dll
+C:\Users\M1037374\Desktop\Play11\BusinessLayer\bin\Debug\BusinessLayer.pdb
+C:\Users\M1037374\Desktop\Play11\BusinessLayer\bin\Debug\DataAccessLayer.dll
+C:\Users\M1037374\Desktop\Play11\BusinessLayer\bin\Debug\EntityLayer.dll
+C:\Users\M1037374\Desktop\Play11\BusinessLayer\bin\Debug\EntityFramework.dll
+C:\Users\M1037374\Desktop\Play11\BusinessLayer\bin\Debug\DataAccessLayer.pdb
+C:\Users\M1037374\Desktop\Play11\BusinessLayer\bin\Debug\DataAccessLayer.dll.config
+C:\Users\M1037374\Desktop\Play11\BusinessLayer\bin\Debug\EntityLayer.pdb
+C:\Users\M1037374\Desktop\Play11\BusinessLayer\bin\Debug\EntityFramework.xml
+C:\Users\M1037374\Desktop\Play11\BusinessLayer\obj\Debug\BusinessLayer.csprojResolveAssemblyReference.cache
+C:\Users\M1037374\Desktop\Play11\BusinessLayer\obj\Debug\BusinessLayer.csproj.CoreCompileInputs.cache
+C:\Users\M1037374\Desktop\Play11\BusinessLayer\obj\Debug\BusinessLayer.dll
+C:\Users\M1037374\Desktop\Play11\BusinessLayer\obj\Debug\BusinessLayer.pdb

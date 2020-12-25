@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Play11 Team</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <link href="~/Content/css/materialize.min.css" rel="stylesheet" />
+    <script src="~/Content/js/materialize.min.js"></script>
+    <link href="~/Content/css/MaterializeIcons.css" rel="stylesheet" />
+
+</head>
+<body onload="startTime()">
+    <div class="header navbar-fixed">
+        <nav class="navheaderusr">
+            <div class="nav-wrapper">
+
+                <span class="headertitleusr">Play 11</span>
+
+
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li id="CurrentTime"></li>
+                    <li><a href="#">About</a></li>
+                    <li>
+                        <a id="logoutlink" href="@Url.Action("Logout", "Login")"><span>Logout</span></a>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+    </div>
+    <div id="pagecontent" class="container body-content">
+        @RenderBody()
+        <hr />
+    </div>
+    <footer>
+        <p>&copy; @DateTime.Now.Year - Play11 Team</p>
+    </footer>
+    <script>
+        function startTime() {
+            var today = new Date();
+            var h = today.getHours();
+            var m = today.getMinutes();
+            var s = today.getSeconds();
+            m = checkTime(m);
+            s = checkTime(s);
+            document.getElementById('CurrentTime').innerHTML =
+                h + ":" + m + ":" + s;
+            var t = setTimeout(startTime, 500);
+        }
+        function checkTime(i) {
+            if (i < 10) { i = "0" + i };
+            return i;
+        }
+    </script>
+</body>
+</html>

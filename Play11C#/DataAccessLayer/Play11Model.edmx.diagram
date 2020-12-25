@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f4b23220811d4d91ac07c1cb2e4a79c0" Name="Diagram1" ZoomLevel="87">
+        <EntityTypeShape EntityType="Play11DatabaseModel.ref_PlayerRole" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Play11DatabaseModel.ref_UserRole" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Play11DatabaseModel.trn_ScoreCardDetails" Width="1.5" PointX="8" PointY="2.375" />
+        <EntityTypeShape EntityType="Play11DatabaseModel.ref_UserDetails" Width="1.5" PointX="3" PointY="1" />
+        <AssociationConnector Association="Play11DatabaseModel.FK__ref_UserD__RoleI__25869641" />
+        <EntityTypeShape EntityType="Play11DatabaseModel.ref_PlayerDetails" Width="1.5" PointX="3" PointY="4.625" />
+        <EntityTypeShape EntityType="Play11DatabaseModel.ref_TeamDetails" Width="1.5" PointX="0.75" PointY="8.125" />
+        <AssociationConnector Association="Play11DatabaseModel.FK__ref_Playe__Playe__2A4B4B5E" />
+        <AssociationConnector Association="Play11DatabaseModel.FK__ref_Playe__TeamI__36B12243" />
+        <AssociationConnector Association="Play11DatabaseModel.FK__trn_Score__Playe__2F10007B" />
+        <EntityTypeShape EntityType="Play11DatabaseModel.trn_UserTeamDetails" Width="1.5" PointX="11" PointY="2.875" />
+        <AssociationConnector Association="Play11DatabaseModel.FK__trn_UserT__Playe__49C3F6B7" />
+        <AssociationConnector Association="Play11DatabaseModel.FK__trn_UserT__UserI__48CFD27E" />
+        <EntityTypeShape EntityType="Play11DatabaseModel.ref_MatchDetails" Width="1.5" PointX="3" PointY="8.625" />
+        <AssociationConnector Association="Play11DatabaseModel.FK__ref_Match__First__4CA06362" />
+        <AssociationConnector Association="Play11DatabaseModel.FK__ref_Match__Secon__4D94879B" />
+        <AssociationConnector Association="Play11DatabaseModel.FK__trn_Score__Match__2E1BDC42" />
+        <AssociationConnector Association="Play11DatabaseModel.FK__trn_UserT__Match__4AB81AF0" />
+        <EntityTypeShape EntityType="Play11DatabaseModel.ExecptionLog" Width="1.5" PointX="5.375" PointY="6.75" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

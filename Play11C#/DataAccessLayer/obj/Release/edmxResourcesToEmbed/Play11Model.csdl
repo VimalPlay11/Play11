@@ -1,0 +1,283 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Play11DatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ref_PlayerRole">
+    <Key>
+      <PropertyRef Name="PlayerRoleId" />
+    </Key>
+    <Property Name="PlayerRoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PlayerRoleName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ref_PlayerDetails" Relationship="Play11DatabaseModel.FK__ref_Playe__Playe__2A4B4B5E" FromRole="ref_PlayerRole" ToRole="ref_PlayerDetails" />
+  </EntityType>
+  <EntityType Name="ref_UserRole">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ref_UserDetails" Relationship="Play11DatabaseModel.FK__ref_UserD__RoleI__25869641" FromRole="ref_UserRole" ToRole="ref_UserDetails" />
+  </EntityType>
+  <EntityContainer Name="Play11DatabaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ref_PlayerRole" EntityType="Self.ref_PlayerRole" />
+    <EntitySet Name="ref_UserRole" EntityType="Self.ref_UserRole" />
+    <EntitySet Name="trn_ScoreCardDetails" EntityType="Play11DatabaseModel.trn_ScoreCardDetails" />
+    <EntitySet Name="ref_UserDetails" EntityType="Play11DatabaseModel.ref_UserDetails" />
+    <AssociationSet Name="FK__ref_UserD__RoleI__25869641" Association="Play11DatabaseModel.FK__ref_UserD__RoleI__25869641">
+      <End Role="ref_UserRole" EntitySet="ref_UserRole" />
+      <End Role="ref_UserDetails" EntitySet="ref_UserDetails" />
+    </AssociationSet>
+    <EntitySet Name="ref_PlayerDetails" EntityType="Play11DatabaseModel.ref_PlayerDetails" />
+    <EntitySet Name="ref_TeamDetails" EntityType="Play11DatabaseModel.ref_TeamDetails" />
+    <AssociationSet Name="FK__ref_Playe__Playe__2A4B4B5E" Association="Play11DatabaseModel.FK__ref_Playe__Playe__2A4B4B5E">
+      <End Role="ref_PlayerRole" EntitySet="ref_PlayerRole" />
+      <End Role="ref_PlayerDetails" EntitySet="ref_PlayerDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ref_Playe__TeamI__36B12243" Association="Play11DatabaseModel.FK__ref_Playe__TeamI__36B12243">
+      <End Role="ref_TeamDetails" EntitySet="ref_TeamDetails" />
+      <End Role="ref_PlayerDetails" EntitySet="ref_PlayerDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__trn_Score__Playe__2F10007B" Association="Play11DatabaseModel.FK__trn_Score__Playe__2F10007B">
+      <End Role="ref_PlayerDetails" EntitySet="ref_PlayerDetails" />
+      <End Role="trn_ScoreCardDetails" EntitySet="trn_ScoreCardDetails" />
+    </AssociationSet>
+    <EntitySet Name="trn_UserTeamDetails" EntityType="Play11DatabaseModel.trn_UserTeamDetails" />
+    <AssociationSet Name="FK__trn_UserT__Playe__49C3F6B7" Association="Play11DatabaseModel.FK__trn_UserT__Playe__49C3F6B7">
+      <End Role="ref_PlayerDetails" EntitySet="ref_PlayerDetails" />
+      <End Role="trn_UserTeamDetails" EntitySet="trn_UserTeamDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__trn_UserT__UserI__48CFD27E" Association="Play11DatabaseModel.FK__trn_UserT__UserI__48CFD27E">
+      <End Role="ref_UserDetails" EntitySet="ref_UserDetails" />
+      <End Role="trn_UserTeamDetails" EntitySet="trn_UserTeamDetails" />
+    </AssociationSet>
+    <EntitySet Name="ref_MatchDetails" EntityType="Play11DatabaseModel.ref_MatchDetails" />
+    <AssociationSet Name="FK__ref_Match__First__4CA06362" Association="Play11DatabaseModel.FK__ref_Match__First__4CA06362">
+      <End Role="ref_TeamDetails" EntitySet="ref_TeamDetails" />
+      <End Role="ref_MatchDetails" EntitySet="ref_MatchDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ref_Match__Secon__4D94879B" Association="Play11DatabaseModel.FK__ref_Match__Secon__4D94879B">
+      <End Role="ref_TeamDetails" EntitySet="ref_TeamDetails" />
+      <End Role="ref_MatchDetails" EntitySet="ref_MatchDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__trn_Score__Match__2E1BDC42" Association="Play11DatabaseModel.FK__trn_Score__Match__2E1BDC42">
+      <End Role="ref_MatchDetails" EntitySet="ref_MatchDetails" />
+      <End Role="trn_ScoreCardDetails" EntitySet="trn_ScoreCardDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__trn_UserT__Match__4AB81AF0" Association="Play11DatabaseModel.FK__trn_UserT__Match__4AB81AF0">
+      <End Role="ref_MatchDetails" EntitySet="ref_MatchDetails" />
+      <End Role="trn_UserTeamDetails" EntitySet="trn_UserTeamDetails" />
+    </AssociationSet>
+    <EntitySet Name="ExecptionLogs" EntityType="Play11DatabaseModel.ExecptionLog" />
+  </EntityContainer>
+  <EntityType Name="trn_ScoreCardDetails">
+    <Key>
+      <PropertyRef Name="OverId" />
+    </Key>
+    <Property Name="MatchId" Type="Int32" />
+    <Property Name="PlayerId" Type="Int32" />
+    <Property Name="RunsScored" Type="Int32" />
+    <Property Name="FourCount" Type="Int32" />
+    <Property Name="SixCount" Type="Int32" />
+    <Property Name="RunOutorCatches" Type="Int32" />
+    <Property Name="WicketsTaken" Type="Int32" />
+    <Property Name="MaidenOvers" Type="Int32" />
+    <Property Name="OverId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="ref_PlayerDetails" Relationship="Play11DatabaseModel.FK__trn_Score__Playe__2F10007B" FromRole="trn_ScoreCardDetails" ToRole="ref_PlayerDetails" />
+    <NavigationProperty Name="ref_MatchDetails" Relationship="Play11DatabaseModel.FK__trn_Score__Match__2E1BDC42" FromRole="trn_ScoreCardDetails" ToRole="ref_MatchDetails" />
+  </EntityType>
+  <EntityType Name="ref_UserDetails">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="EmailId" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="MobileNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="RoleId" Type="Int32" />
+    <NavigationProperty Name="ref_UserRole" Relationship="Play11DatabaseModel.FK__ref_UserD__RoleI__25869641" FromRole="ref_UserDetails" ToRole="ref_UserRole" />
+    <NavigationProperty Name="trn_UserTeamDetails" Relationship="Play11DatabaseModel.FK__trn_UserT__UserI__48CFD27E" FromRole="ref_UserDetails" ToRole="trn_UserTeamDetails" />
+  </EntityType>
+  <Association Name="FK__ref_UserD__RoleI__25869641">
+    <End Type="Play11DatabaseModel.ref_UserRole" Role="ref_UserRole" Multiplicity="0..1" />
+    <End Type="Play11DatabaseModel.ref_UserDetails" Role="ref_UserDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ref_UserRole">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="ref_UserDetails">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ref_PlayerDetails">
+    <Key>
+      <PropertyRef Name="PlayerId" />
+    </Key>
+    <Property Name="PlayerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PlayerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PlayerRoleId" Type="Int32" />
+    <Property Name="Points" Type="Decimal" Precision="4" Scale="2" />
+    <Property Name="TeamId" Type="Int32" />
+    <NavigationProperty Name="ref_PlayerRole" Relationship="Play11DatabaseModel.FK__ref_Playe__Playe__2A4B4B5E" FromRole="ref_PlayerDetails" ToRole="ref_PlayerRole" />
+    <NavigationProperty Name="ref_TeamDetails" Relationship="Play11DatabaseModel.FK__ref_Playe__TeamI__36B12243" FromRole="ref_PlayerDetails" ToRole="ref_TeamDetails" />
+    <NavigationProperty Name="trn_ScoreCardDetails" Relationship="Play11DatabaseModel.FK__trn_Score__Playe__2F10007B" FromRole="ref_PlayerDetails" ToRole="trn_ScoreCardDetails" />
+    <NavigationProperty Name="trn_UserTeamDetails" Relationship="Play11DatabaseModel.FK__trn_UserT__Playe__49C3F6B7" FromRole="ref_PlayerDetails" ToRole="trn_UserTeamDetails" />
+  </EntityType>
+  <EntityType Name="ref_TeamDetails">
+    <Key>
+      <PropertyRef Name="TeamId" />
+    </Key>
+    <Property Name="TeamId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TeamName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ref_PlayerDetails" Relationship="Play11DatabaseModel.FK__ref_Playe__TeamI__36B12243" FromRole="ref_TeamDetails" ToRole="ref_PlayerDetails" />
+    <NavigationProperty Name="ref_MatchDetails" Relationship="Play11DatabaseModel.FK__ref_Match__First__4CA06362" FromRole="ref_TeamDetails" ToRole="ref_MatchDetails" />
+    <NavigationProperty Name="ref_MatchDetails1" Relationship="Play11DatabaseModel.FK__ref_Match__Secon__4D94879B" FromRole="ref_TeamDetails" ToRole="ref_MatchDetails" />
+  </EntityType>
+  <Association Name="FK__ref_Playe__Playe__2A4B4B5E">
+    <End Type="Play11DatabaseModel.ref_PlayerRole" Role="ref_PlayerRole" Multiplicity="0..1" />
+    <End Type="Play11DatabaseModel.ref_PlayerDetails" Role="ref_PlayerDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ref_PlayerRole">
+        <PropertyRef Name="PlayerRoleId" />
+      </Principal>
+      <Dependent Role="ref_PlayerDetails">
+        <PropertyRef Name="PlayerRoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ref_Playe__TeamI__36B12243">
+    <End Type="Play11DatabaseModel.ref_TeamDetails" Role="ref_TeamDetails" Multiplicity="0..1" />
+    <End Type="Play11DatabaseModel.ref_PlayerDetails" Role="ref_PlayerDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ref_TeamDetails">
+        <PropertyRef Name="TeamId" />
+      </Principal>
+      <Dependent Role="ref_PlayerDetails">
+        <PropertyRef Name="TeamId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__trn_Score__Playe__2F10007B">
+    <End Type="Play11DatabaseModel.ref_PlayerDetails" Role="ref_PlayerDetails" Multiplicity="0..1" />
+    <End Type="Play11DatabaseModel.trn_ScoreCardDetails" Role="trn_ScoreCardDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ref_PlayerDetails">
+        <PropertyRef Name="PlayerId" />
+      </Principal>
+      <Dependent Role="trn_ScoreCardDetails">
+        <PropertyRef Name="PlayerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="trn_UserTeamDetails">
+    <Key>
+      <PropertyRef Name="CurrentMatchUserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="PlayerId" Type="Int32" />
+    <Property Name="MatchId" Type="Int32" />
+    <Property Name="CurrentMatchUserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="ref_PlayerDetails" Relationship="Play11DatabaseModel.FK__trn_UserT__Playe__49C3F6B7" FromRole="trn_UserTeamDetails" ToRole="ref_PlayerDetails" />
+    <NavigationProperty Name="ref_UserDetails" Relationship="Play11DatabaseModel.FK__trn_UserT__UserI__48CFD27E" FromRole="trn_UserTeamDetails" ToRole="ref_UserDetails" />
+    <NavigationProperty Name="ref_MatchDetails" Relationship="Play11DatabaseModel.FK__trn_UserT__Match__4AB81AF0" FromRole="trn_UserTeamDetails" ToRole="ref_MatchDetails" />
+  </EntityType>
+  <Association Name="FK__trn_UserT__Playe__49C3F6B7">
+    <End Type="Play11DatabaseModel.ref_PlayerDetails" Role="ref_PlayerDetails" Multiplicity="0..1" />
+    <End Type="Play11DatabaseModel.trn_UserTeamDetails" Role="trn_UserTeamDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ref_PlayerDetails">
+        <PropertyRef Name="PlayerId" />
+      </Principal>
+      <Dependent Role="trn_UserTeamDetails">
+        <PropertyRef Name="PlayerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__trn_UserT__UserI__48CFD27E">
+    <End Type="Play11DatabaseModel.ref_UserDetails" Role="ref_UserDetails" Multiplicity="0..1" />
+    <End Type="Play11DatabaseModel.trn_UserTeamDetails" Role="trn_UserTeamDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ref_UserDetails">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="trn_UserTeamDetails">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ref_MatchDetails">
+    <Key>
+      <PropertyRef Name="MatchId" />
+    </Key>
+    <Property Name="MatchId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Venue" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MatchDate" Type="DateTime" Precision="0" />
+    <Property Name="MatchTime" Type="Time" Precision="7" />
+    <Property Name="FirstTeam" Type="Int32" />
+    <Property Name="SecondTeam" Type="Int32" />
+    <NavigationProperty Name="ref_TeamDetails" Relationship="Play11DatabaseModel.FK__ref_Match__First__4CA06362" FromRole="ref_MatchDetails" ToRole="ref_TeamDetails" />
+    <NavigationProperty Name="ref_TeamDetails1" Relationship="Play11DatabaseModel.FK__ref_Match__Secon__4D94879B" FromRole="ref_MatchDetails" ToRole="ref_TeamDetails" />
+    <NavigationProperty Name="trn_ScoreCardDetails" Relationship="Play11DatabaseModel.FK__trn_Score__Match__2E1BDC42" FromRole="ref_MatchDetails" ToRole="trn_ScoreCardDetails" />
+    <NavigationProperty Name="trn_UserTeamDetails" Relationship="Play11DatabaseModel.FK__trn_UserT__Match__4AB81AF0" FromRole="ref_MatchDetails" ToRole="trn_UserTeamDetails" />
+    <Property Name="IsCompleted" Type="Int32" />
+  </EntityType>
+  <Association Name="FK__ref_Match__First__4CA06362">
+    <End Type="Play11DatabaseModel.ref_TeamDetails" Role="ref_TeamDetails" Multiplicity="0..1" />
+    <End Type="Play11DatabaseModel.ref_MatchDetails" Role="ref_MatchDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ref_TeamDetails">
+        <PropertyRef Name="TeamId" />
+      </Principal>
+      <Dependent Role="ref_MatchDetails">
+        <PropertyRef Name="FirstTeam" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ref_Match__Secon__4D94879B">
+    <End Type="Play11DatabaseModel.ref_TeamDetails" Role="ref_TeamDetails" Multiplicity="0..1" />
+    <End Type="Play11DatabaseModel.ref_MatchDetails" Role="ref_MatchDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ref_TeamDetails">
+        <PropertyRef Name="TeamId" />
+      </Principal>
+      <Dependent Role="ref_MatchDetails">
+        <PropertyRef Name="SecondTeam" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__trn_Score__Match__2E1BDC42">
+    <End Type="Play11DatabaseModel.ref_MatchDetails" Role="ref_MatchDetails" Multiplicity="0..1" />
+    <End Type="Play11DatabaseModel.trn_ScoreCardDetails" Role="trn_ScoreCardDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ref_MatchDetails">
+        <PropertyRef Name="MatchId" />
+      </Principal>
+      <Dependent Role="trn_ScoreCardDetails">
+        <PropertyRef Name="MatchId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__trn_UserT__Match__4AB81AF0">
+    <End Type="Play11DatabaseModel.ref_MatchDetails" Role="ref_MatchDetails" Multiplicity="0..1" />
+    <End Type="Play11DatabaseModel.trn_UserTeamDetails" Role="trn_UserTeamDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ref_MatchDetails">
+        <PropertyRef Name="MatchId" />
+      </Principal>
+      <Dependent Role="trn_UserTeamDetails">
+        <PropertyRef Name="MatchId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ExecptionLog">
+    <Key>
+      <PropertyRef Name="LogId" />
+    </Key>
+    <Property Name="LogId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="InnerExecption" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ExceptionMsg" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Source" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="StackTrace" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DateTime" Type="DateTime" Precision="3" />
+  </EntityType>
+</Schema>

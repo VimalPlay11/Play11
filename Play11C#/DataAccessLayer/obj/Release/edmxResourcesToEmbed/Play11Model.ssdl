@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Play11DatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ExecptionLog">
+    <Key>
+      <PropertyRef Name="LogId" />
+    </Key>
+    <Property Name="LogId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="varchar" MaxLength="50" />
+    <Property Name="InnerExecption" Type="varchar(max)" />
+    <Property Name="ExceptionMsg" Type="varchar(max)" />
+    <Property Name="Source" Type="varchar(max)" />
+    <Property Name="StackTrace" Type="varchar(max)" />
+    <Property Name="DateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ref_MatchDetails">
+    <Key>
+      <PropertyRef Name="MatchId" />
+    </Key>
+    <Property Name="MatchId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Venue" Type="varchar" MaxLength="50" />
+    <Property Name="MatchDate" Type="date" />
+    <Property Name="MatchTime" Type="time" Precision="7" />
+    <Property Name="FirstTeam" Type="int" />
+    <Property Name="SecondTeam" Type="int" />
+    <Property Name="IsCompleted" Type="int" />
+  </EntityType>
+  <EntityType Name="ref_PlayerDetails">
+    <Key>
+      <PropertyRef Name="PlayerId" />
+    </Key>
+    <Property Name="PlayerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PlayerName" Type="varchar" MaxLength="50" />
+    <Property Name="PlayerRoleId" Type="int" />
+    <Property Name="Points" Type="decimal" Precision="4" Scale="2" />
+    <Property Name="TeamId" Type="int" />
+  </EntityType>
+  <EntityType Name="ref_PlayerRole">
+    <Key>
+      <PropertyRef Name="PlayerRoleId" />
+    </Key>
+    <Property Name="PlayerRoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PlayerRoleName" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="ref_TeamDetails">
+    <Key>
+      <PropertyRef Name="TeamId" />
+    </Key>
+    <Property Name="TeamId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TeamName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ref_UserDetails">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="100" />
+    <Property Name="EmailId" Type="varchar" MaxLength="40" />
+    <Property Name="MobileNumber" Type="varchar" MaxLength="10" />
+    <Property Name="RoleId" Type="int" />
+  </EntityType>
+  <EntityType Name="ref_UserRole">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleName" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="trn_ScoreCardDetails">
+    <Key>
+      <PropertyRef Name="OverId" />
+    </Key>
+    <Property Name="MatchId" Type="int" />
+    <Property Name="PlayerId" Type="int" />
+    <Property Name="RunsScored" Type="int" />
+    <Property Name="FourCount" Type="int" />
+    <Property Name="SixCount" Type="int" />
+    <Property Name="RunOutorCatches" Type="int" />
+    <Property Name="WicketsTaken" Type="int" />
+    <Property Name="MaidenOvers" Type="int" />
+    <Property Name="OverId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="trn_UserTeamDetails">
+    <Key>
+      <PropertyRef Name="CurrentMatchUserId" />
+    </Key>
+    <Property Name="UserId" Type="int" />
+    <Property Name="PlayerId" Type="int" />
+    <Property Name="MatchId" Type="int" />
+    <Property Name="CurrentMatchUserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__ref_Match__First__4CA06362">
+    <End Role="ref_TeamDetails" Type="Self.ref_TeamDetails" Multiplicity="0..1" />
+    <End Role="ref_MatchDetails" Type="Self.ref_MatchDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ref_TeamDetails">
+        <PropertyRef Name="TeamId" />
+      </Principal>
+      <Dependent Role="ref_MatchDetails">
+        <PropertyRef Name="FirstTeam" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ref_Match__Secon__4D94879B">
+    <End Role="ref_TeamDetails" Type="Self.ref_TeamDetails" Multiplicity="0..1" />
+    <End Role="ref_MatchDetails" Type="Self.ref_MatchDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ref_TeamDetails">
+        <PropertyRef Name="TeamId" />
+      </Principal>
+      <Dependent Role="ref_MatchDetails">
+        <PropertyRef Name="SecondTeam" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ref_Playe__Playe__2A4B4B5E">
+    <End Role="ref_PlayerRole" Type="Self.ref_PlayerRole" Multiplicity="0..1" />
+    <End Role="ref_PlayerDetails" Type="Self.ref_PlayerDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ref_PlayerRole">
+        <PropertyRef Name="PlayerRoleId" />
+      </Principal>
+      <Dependent Role="ref_PlayerDetails">
+        <PropertyRef Name="PlayerRoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ref_Playe__TeamI__36B12243">
+    <End Role="ref_TeamDetails" Type="Self.ref_TeamDetails" Multiplicity="0..1" />
+    <End Role="ref_PlayerDetails" Type="Self.ref_PlayerDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ref_TeamDetails">
+        <PropertyRef Name="TeamId" />
+      </Principal>
+      <Dependent Role="ref_PlayerDetails">
+        <PropertyRef Name="TeamId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ref_UserD__RoleI__25869641">
+    <End Role="ref_UserRole" Type="Self.ref_UserRole" Multiplicity="0..1" />
+    <End Role="ref_UserDetails" Type="Self.ref_UserDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ref_UserRole">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="ref_UserDetails">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__trn_Score__Match__2E1BDC42">
+    <End Role="ref_MatchDetails" Type="Self.ref_MatchDetails" Multiplicity="0..1" />
+    <End Role="trn_ScoreCardDetails" Type="Self.trn_ScoreCardDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ref_MatchDetails">
+        <PropertyRef Name="MatchId" />
+      </Principal>
+      <Dependent Role="trn_ScoreCardDetails">
+        <PropertyRef Name="MatchId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__trn_Score__Playe__2F10007B">
+    <End Role="ref_PlayerDetails" Type="Self.ref_PlayerDetails" Multiplicity="0..1" />
+    <End Role="trn_ScoreCardDetails" Type="Self.trn_ScoreCardDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ref_PlayerDetails">
+        <PropertyRef Name="PlayerId" />
+      </Principal>
+      <Dependent Role="trn_ScoreCardDetails">
+        <PropertyRef Name="PlayerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__trn_UserT__Match__4AB81AF0">
+    <End Role="ref_MatchDetails" Type="Self.ref_MatchDetails" Multiplicity="0..1" />
+    <End Role="trn_UserTeamDetails" Type="Self.trn_UserTeamDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ref_MatchDetails">
+        <PropertyRef Name="MatchId" />
+      </Principal>
+      <Dependent Role="trn_UserTeamDetails">
+        <PropertyRef Name="MatchId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__trn_UserT__Playe__49C3F6B7">
+    <End Role="ref_PlayerDetails" Type="Self.ref_PlayerDetails" Multiplicity="0..1" />
+    <End Role="trn_UserTeamDetails" Type="Self.trn_UserTeamDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ref_PlayerDetails">
+        <PropertyRef Name="PlayerId" />
+      </Principal>
+      <Dependent Role="trn_UserTeamDetails">
+        <PropertyRef Name="PlayerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__trn_UserT__UserI__48CFD27E">
+    <End Role="ref_UserDetails" Type="Self.ref_UserDetails" Multiplicity="0..1" />
+    <End Role="trn_UserTeamDetails" Type="Self.trn_UserTeamDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ref_UserDetails">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="trn_UserTeamDetails">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Play11DatabaseModelStoreContainer">
+    <EntitySet Name="ExecptionLog" EntityType="Self.ExecptionLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ref_MatchDetails" EntityType="Self.ref_MatchDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ref_PlayerDetails" EntityType="Self.ref_PlayerDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ref_PlayerRole" EntityType="Self.ref_PlayerRole" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ref_TeamDetails" EntityType="Self.ref_TeamDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ref_UserDetails" EntityType="Self.ref_UserDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ref_UserRole" EntityType="Self.ref_UserRole" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="trn_ScoreCardDetails" EntityType="Self.trn_ScoreCardDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="trn_UserTeamDetails" EntityType="Self.trn_UserTeamDetails" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__ref_Match__First__4CA06362" Association="Self.FK__ref_Match__First__4CA06362">
+      <End Role="ref_TeamDetails" EntitySet="ref_TeamDetails" />
+      <End Role="ref_MatchDetails" EntitySet="ref_MatchDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ref_Match__Secon__4D94879B" Association="Self.FK__ref_Match__Secon__4D94879B">
+      <End Role="ref_TeamDetails" EntitySet="ref_TeamDetails" />
+      <End Role="ref_MatchDetails" EntitySet="ref_MatchDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ref_Playe__Playe__2A4B4B5E" Association="Self.FK__ref_Playe__Playe__2A4B4B5E">
+      <End Role="ref_PlayerRole" EntitySet="ref_PlayerRole" />
+      <End Role="ref_PlayerDetails" EntitySet="ref_PlayerDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ref_Playe__TeamI__36B12243" Association="Self.FK__ref_Playe__TeamI__36B12243">
+      <End Role="ref_TeamDetails" EntitySet="ref_TeamDetails" />
+      <End Role="ref_PlayerDetails" EntitySet="ref_PlayerDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ref_UserD__RoleI__25869641" Association="Self.FK__ref_UserD__RoleI__25869641">
+      <End Role="ref_UserRole" EntitySet="ref_UserRole" />
+      <End Role="ref_UserDetails" EntitySet="ref_UserDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__trn_Score__Match__2E1BDC42" Association="Self.FK__trn_Score__Match__2E1BDC42">
+      <End Role="ref_MatchDetails" EntitySet="ref_MatchDetails" />
+      <End Role="trn_ScoreCardDetails" EntitySet="trn_ScoreCardDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__trn_Score__Playe__2F10007B" Association="Self.FK__trn_Score__Playe__2F10007B">
+      <End Role="ref_PlayerDetails" EntitySet="ref_PlayerDetails" />
+      <End Role="trn_ScoreCardDetails" EntitySet="trn_ScoreCardDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__trn_UserT__Match__4AB81AF0" Association="Self.FK__trn_UserT__Match__4AB81AF0">
+      <End Role="ref_MatchDetails" EntitySet="ref_MatchDetails" />
+      <End Role="trn_UserTeamDetails" EntitySet="trn_UserTeamDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__trn_UserT__Playe__49C3F6B7" Association="Self.FK__trn_UserT__Playe__49C3F6B7">
+      <End Role="ref_PlayerDetails" EntitySet="ref_PlayerDetails" />
+      <End Role="trn_UserTeamDetails" EntitySet="trn_UserTeamDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__trn_UserT__UserI__48CFD27E" Association="Self.FK__trn_UserT__UserI__48CFD27E">
+      <End Role="ref_UserDetails" EntitySet="ref_UserDetails" />
+      <End Role="trn_UserTeamDetails" EntitySet="trn_UserTeamDetails" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

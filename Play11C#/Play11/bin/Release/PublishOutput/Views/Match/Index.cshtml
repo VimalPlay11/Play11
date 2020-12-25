@@ -1,0 +1,152 @@
+﻿@model Play11.Models.MatchDetails
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Play11 Team</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+</head>
+<body>
+   
+    <div class="container" id="ctnrMatchDetails">
+        <h3 id="lblMatchDetails">Match Details</h3>
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#Fixtures">Fixtures</a></li>
+            <li><a href="#InProgress">InProgress</a></li>
+            <li><a href="#Completed">Completed</a></li>
+        </ul>
+
+        <div class="tab-content">
+
+            <div id="Fixtures" class="tab-pane fade in active">
+                <table id="tableFixtures" class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Team 1</th>
+                            <th>Team 2</th>
+                            <th>Time</th>
+                            <th>Venue</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var m in Model.lstFixtures)
+                    {
+                        <tr class="PlayerUnselcted" onclick="getFixturesMD(this)">
+                            <td name="hdnMatchId" class="hideContent"> @m.MatchId</td>
+                            <td>@m.MatchDate.ToShortDateString()</td>
+                            <td>@m.strFirstTeam</td>
+                            <td>@m.strSecondTeam</td>
+                            <td>@m.MatchTime</td>
+                            <td>@m.Venue</td>
+                        </tr>
+                }
+                    </tbody>
+                </table>
+            </div>
+            <div id="InProgress" class="tab-pane fade">
+                <table id="tableInProgress" class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Team 1</th>
+                            <th>Team 2</th>
+                            <th>Time</th>
+                            <th>Venue</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var m in Model.lstInProgress)
+                    {
+                        <tr class="PlayerUnselcted" onclick="getMatchDetails(this)">
+                            <td name="hdnMatchId" class="hideContent"> @m.MatchId</td>
+                            <td>@m.MatchDate.ToShortDateString()</td>
+                            <td>@m.strFirstTeam</td>
+                            <td>@m.strSecondTeam</td>
+                            <td>@m.MatchTime</td>
+                            <td>@m.Venue</td>
+                        </tr>
+                }
+
+                    </tbody>
+                </table>
+            </div>
+            <div id="Completed" class="tab-pane fade">
+                <table id="tableCompleted" class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Team 1</th>
+                            <th>Team 2</th>
+                            <th>Time</th>
+                            <th>Venue</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var m in Model.lstCompleted)
+                    {
+                        <tr class="PlayerUnselcted" onclick="getMatchDetails(this)">
+                            <td name="hdnMatchId" class="hideContent"> @m.MatchId</td>
+                            <td>@m.MatchDate.ToShortDateString()</td>
+                            <td>@m.strFirstTeam</td>
+                            <td>@m.strSecondTeam</td>
+                            <td>@m.MatchTime</td>
+                            <td>@m.Venue</td>
+                        </tr>
+                }
+                    </tbody>
+                </table>
+            </div>
+
+
+        </div>
+    </div>
+    <script>
+            $(document).ready(function () {
+                $(".nav-tabs a").click(function () {
+                    $(this).tab('show');
+                });
+            });
+
+            $(document).ready(function () { });
+            function getFixturesMD(currRow) {
+                    var matId = $(currRow).find('td:eq(0)').html();
+                    window.location.href = "@Url.Action("Index", "User")?matchId=" + matId.trim();
+                    @*var redirectUrl = "@Url.Action("Index", "User", new { matchId = "tempID" })";
+                    redirectUrl = redirectUrl.replace("tempID", matId.trim());*@
+            }
+
+            function getMatchDetails(currRow) {
+                    var matId = $(currRow).find('td:eq(0)').html();
+                    $.ajax({
+                        url: '@Url.Action("CheckUserJoinedContest", "User")',
+                        data: { matchId:matId },
+                        type: "GET",
+                        success: function (result) {
+                            if (result > 0) {
+                                window.location.href = '@Url.Action("LeaderBoard", "Match")';
+                            }
+                            else if (result == 0) {
+                                alert("You have not joined this contest");
+                            }
+                            else if (result == -1) {
+                                //log error
+                            }
+                        },
+                        error: function (response) {
+                            alert("error");
+                        }
+                    });
+            }
+    </script>
+</body>
+</html>

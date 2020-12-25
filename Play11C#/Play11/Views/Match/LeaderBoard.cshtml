@@ -1,0 +1,106 @@
+﻿@model List<EntityLayer.UserEL>
+
+@{
+    ViewBag.Title = "LeaderBoard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Play11 Team</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            left: 0;
+            right: 0;
+            width: 100% !important;
+            background-color: rgba(0,0,0,.0001)!important;
+            max-height:100%!important;
+            /* background-color: #fafafa; */
+            padding: 0;
+            /* max-height: 70%; */
+            /* width: 55%; */
+            margin: auto;
+            overflow-y: auto;
+            /* border-radius: 2px; */
+            /* will-change: top, opacity; */
+        }
+    </style>
+
+</head>
+<body>
+  <br/>
+        <a href="@Url.Action("Index", "Match")"><span>Go back to list of matches</span></a>
+    
+    <div class="container" id="ctnrLeaderboard">
+        <h3 id="lblLeaderboard">Leaderboard</h3>
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>User Name</th>
+                    <th>Points</th>
+                    <th>Ranking</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var m in Model)
+                {
+                    <tr class="PlayerUnselcted" data-toggle="modal" data-target="#ModalViewTeam" onclick="getUserDetails(this)">
+                        <td name="hdnUserId" class="hideContent"> @m.userId</td>
+                        <td>@m.userName</td>
+                        <td>@m.UserPoints</td>
+                        <td>@m.userRank</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div id="ModalViewTeam" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" id="UserTeamDetails"></h4>
+                </div>
+                <div id="TeamDetailsContent" class="modal-body">
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script>
+
+
+        $(document).ready(function () { });
+        function getUserDetails(currRow) {
+            var userId = $(currRow).find('td:eq(0)').html();
+            var userName = $(currRow).find('td:eq(1)').html();
+            document.getElementById('UserTeamDetails').innerHTML = userName + " Team Details";
+            //alert(userId);
+            $.ajax({
+                url:'@Url.Action("ViewTeam", "Match")',
+                data: "userId=" + userId.trim(),
+                type:"GET",
+                success: function(result) {
+                    $("#TeamDetailsContent").html(result);
+                },
+                error: function (response) {
+                    alert("error");
+                }
+            });
+
+        }
+    </script>
+</body>
+</html>

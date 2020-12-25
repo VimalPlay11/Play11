@@ -1,0 +1,11 @@
+C:\Users\M1037374\Documents\Visual Studio 2017\Projects\Play11\EntityLayer\bin\Debug\EntityLayer.dll
+C:\Users\M1037374\Documents\Visual Studio 2017\Projects\Play11\EntityLayer\bin\Debug\EntityLayer.pdb
+C:\Users\M1037374\Documents\Visual Studio 2017\Projects\Play11\EntityLayer\obj\Debug\EntityLayer.csproj.CoreCompileInputs.cache
+C:\Users\M1037374\Documents\Visual Studio 2017\Projects\Play11\EntityLayer\obj\Debug\EntityLayer.dll
+C:\Users\M1037374\Documents\Visual Studio 2017\Projects\Play11\EntityLayer\obj\Debug\EntityLayer.pdb
+C:\Users\M1037374\Desktop\Play11\EntityLayer\bin\Debug\EntityLayer.dll
+C:\Users\M1037374\Desktop\Play11\EntityLayer\bin\Debug\EntityLayer.pdb
+C:\Users\M1037374\Desktop\Play11\EntityLayer\obj\Debug\EntityLayer.csprojResolveAssemblyReference.cache
+C:\Users\M1037374\Desktop\Play11\EntityLayer\obj\Debug\EntityLayer.csproj.CoreCompileInputs.cache
+C:\Users\M1037374\Desktop\Play11\EntityLayer\obj\Debug\EntityLayer.dll
+C:\Users\M1037374\Desktop\Play11\EntityLayer\obj\Debug\EntityLayer.pdb

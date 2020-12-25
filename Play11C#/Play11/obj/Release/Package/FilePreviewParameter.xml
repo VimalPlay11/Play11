@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="testdemo1" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\M1037374\\Desktop\\Play11\\Play11\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\M1037374\\Desktop\\Play11\\Play11\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="Play11DatabaseEntities-Web.config Connection String" description="" value="Data Source=A2ML23858\SQLSERVER;Initial Catalog=Play11Database;Integrated Security=True" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\M1037374\\Desktop\\Play11\\Play11\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Play11DatabaseEntities']/@connectionString" />
+  </parameter>
+</parameters>

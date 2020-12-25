@@ -1,0 +1,232 @@
+﻿@model EntityLayer.AdminEL
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Play11 Team</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div>
+        <h3>Welcome Admin!!</h3>
+
+        <div class="container">
+            <ul class="nav nav-tabs">
+                <li><a href="#MatchDetails">Match Details</a></li>
+                <li><a href="#PlayerDetails">Player Details</a></li>
+                <li class="active"><a href="#ScoreCardDetails">ScoreCard Details</a></li>
+            </ul>
+
+            <div class="tab-content">
+                <div id="MatchDetails" class="tab-pane fade">
+                    @using (Html.BeginForm("SaveMatchDetails", "Admin", FormMethod.Post))
+                    {
+                        <table id="tblMatchDetails" class="table">
+                            <tr>
+                                <th colspan="2" align="center">Match Details</th>
+                            </tr>
+                            <tr>
+                                <td>Place : </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.objMatchDetailsEL.Venue)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Match Date : </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.objMatchDetailsEL.MatchDate, null, new { @type = "date" })
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Match Time : </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.objMatchDetailsEL.MatchTime, null, new { @type = "time" })
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>First Team : </td>
+                                <td>
+                                    @Html.DropDownListFor(m => m.objMatchDetailsEL.FirstTeam, (IEnumerable<SelectListItem>)ViewData["TeamDetails"], "Please Select")
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Second Team : </td>
+                                <td>
+                                    @Html.DropDownListFor(m => m.objMatchDetailsEL.SecondTeam, (IEnumerable<SelectListItem>)ViewData["TeamDetails"], "Please Select")
+                                </td>
+                            </tr>
+
+                            <tr>
+
+                                <td></td>
+                                <td>
+                                    <input type="submit" value="Save">
+                                </td>
+                            </tr>
+                        </table>
+                    }
+                </div>
+                <div id="PlayerDetails" class="tab-pane fade">
+                    @using (Html.BeginForm("SavePlayerDetails", "Admin", FormMethod.Post))
+                    {
+                        <table id="tblPlayerDetails" class="table">
+                            <tr>
+                                <th colspan="2" align="center">Player Details</th>
+                            </tr>
+                            <tr>
+                                <td>Player Name : </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.objPlayerDetailsEL.PlayerName)
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Player Role : </td>
+                                <td>
+
+                                    @Html.DropDownListFor(m => m.objPlayerDetailsEL.PlayerRoleId, new List<SelectListItem>
+                                                                                                                                                                                                                                                       {
+                                                                                                                                                                                                                                                       new SelectListItem{ Text="WicketKeeper", Value = "1" },
+                                                                                                                                                                                                                                                       new SelectListItem{ Text="Batsman", Value = "2" },
+                                                                                                                                                                                                                                                       new SelectListItem{ Text="AllRounder", Value ="3" },
+                                                                                                                                                                                                                                                       new SelectListItem{ Text="Bowler", Value = "4" }
+                                                                                                                                                                                                                                                       }, "Please Select")
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Player Points : </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.objPlayerDetailsEL.PlayerPoints)
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Player Team : </td>
+                                <td>
+                                    @Html.DropDownListFor(m => m.objPlayerDetailsEL.PlayerTeamId, (IEnumerable<SelectListItem>)ViewData["TeamDetails"], "Please Select")
+                                </td>
+                            </tr>
+
+
+                            <tr>
+
+                                <td></td>
+                                <td>
+                                    <input type="submit" value="Save">
+                                </td>
+                            </tr>
+                        </table>
+                    }
+                </div>
+                <div id="ScoreCardDetails" class="tab-pane fade in active">
+                    @using (Html.BeginForm("SaveScoreCardDetails", "Admin", FormMethod.Post))
+                    {
+                        <table id="tblScoreCardDetails" class="table">
+                            <tr>
+                                <th>
+                                    Match Id
+                                </th>
+                                <th>
+                                    Player Name
+                                </th>
+                                <th>
+                                    Runs Scored
+                                </th>
+                                <th>
+                                    Four Count
+                                </th>
+                                <th>
+                                    Six Count
+                                </th>
+                                <th>
+                                    RunOut/Catches
+                                </th>
+                                <th>
+                                    Wickets Tacken
+                                </th>
+                                <th>
+                                    Maiden Overs
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DropDownListFor(m => m.objScoreCardDetailsEL.MatchId, (IEnumerable<SelectListItem>)ViewData["InProgressMD"], "Please Select", new { id = "ddlSDMatchId", @type = "number" })
+                                    @*@Html.TextBoxFor(m => m.objScoreCardDetailsEL.MatchId, new { id = "txtSDMatchId",@type = "number"})*@
+                                </td>
+                                <td>
+                                    @Html.DropDownListFor(m => m.objScoreCardDetailsEL.PlayerId, Enumerable.Empty<SelectListItem>(), new { id = "ddlSDPlayerDetails" })
+                                    @*@Html.DropDownListFor(m => m.objScoreCardDetailsEL.PlayerId, (IEnumerable<SelectListItem>)ViewData["PlayerName"], "Please Select")*@
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.objScoreCardDetailsEL.RunsScored, new { @type = "number" })
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.objScoreCardDetailsEL.FourCount, new { @type = "number" })
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.objScoreCardDetailsEL.SixCount, new { @type = "number" })
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.objScoreCardDetailsEL.RunOutorCatches, new { @type = "number" })
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.objScoreCardDetailsEL.WicketsTaken, new { @type = "number" })
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.objScoreCardDetailsEL.MaidenOvers, new { @type = "number" })
+                                </td>
+                                <td>
+                                    <input type="submit" value="Save">
+                                </td>
+                            </tr>
+                        </table>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+
+            $(".nav-tabs a").click(function () {
+                $(this).tab('show');
+            });
+        });
+
+        $("#ddlSDMatchId").on('change', function () {
+            var matId = $("#ddlSDMatchId").val();
+            if (matId != "") {
+                $.ajax({
+                    url: '@Url.Action("GetPlayerDetailsByMatchId", "Admin")',
+                    data: { matchId: matId },
+                    type: "GET",
+                    success: function (res) {
+                        $("#ddlSDPlayerDetails").html('');
+                        for (i = 0; i < res.length; i++) {
+                            $("#ddlSDPlayerDetails").append($('<option></option>').val(res[i].PlayerId).html(res[i].PlayerName))
+                        }
+                    },
+                    error: function (response) {
+                        alert("error");
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+

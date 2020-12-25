@@ -1,0 +1,60 @@
+﻿body {
+    background-color:#e9ebee;
+}
+.headertitleusr {
+    text-shadow: 0px 4px 3px rgba(0,0,0,0.4), 0px 8px 13px rgba(0,0,0,0.1), 0px 18px 23px rgba(0,0,0,0.1);
+    font-size: xx-large;
+    padding-left: 4%;
+    font-family: cursive;
+    font-weight: bolder;
+}
+.table-hover {
+    cursor: pointer;
+}
+.PlayerSelcted {
+    background-color: #96e58c;
+}
+.hideContent {
+    display: none;
+}
+
+.formcontainerusr{
+    width:60% !important;
+}
+#loginregformusr {
+    border: 1px solid grey;
+    padding: 5%;
+    border-radius: 5px;
+    /* width: 100%; */
+    box-shadow: 1px 1px 3px 1px #3b5998
+}
+#navtabusr {
+    width: 65%;
+    padding-left: 29%;
+}
+
+.navheaderusr {
+    background-color: #3b5998 !important;
+}
+
+#loginbtnusr, #registerbtnusr {
+    margin-left: 30% !important;
+}
+#btnSaveTeam {
+    float: right;
+}
+#lblTotalPoints {
+    margin-left: 70%;
+}
+select {
+    display: inherit;
+}
+#ctnrMatchDetails, #ctnrLeaderboard {
+    width: 60%;
+}
+#lblMatchDetails, #lblPlayerDetails, #lblLeaderboard {
+    text-align: center;
+}
+#ctnrPlayerDetails{
+    padding-right:54%;
+}
